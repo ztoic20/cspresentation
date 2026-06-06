@@ -1,6 +1,3 @@
-<?php
-// index.php
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +10,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", system-ui, sans-serif;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -55,7 +53,7 @@ body {
     pointer-events: auto;
 }
 
-/* CARD */
+/* MAIN CARD */
 .card {
     position: relative;
     overflow: hidden;
@@ -79,6 +77,7 @@ body {
     justify-content: center;
 }
 
+/* TECH GRID */
 .card::before {
     content: "";
     position: absolute;
@@ -136,6 +135,10 @@ body {
     border-radius: 20px;
 }
 
+.content::-webkit-scrollbar-thumb:hover {
+    background: rgba(103, 232, 249, 0.85);
+}
+
 /* TEXT */
 h1 {
     font-size: clamp(2.2rem, 4.5vw, 3.85rem);
@@ -162,7 +165,8 @@ h4 {
     margin: 16px 0 9px;
 }
 
-p, li {
+p,
+li {
     font-size: clamp(1.12rem, 1.9vw, 1.68rem);
     line-height: 1.65;
     color: #dbeafe;
@@ -260,7 +264,7 @@ img {
         10px 10px 26px rgba(0, 0, 0, 0.35);
 }
 
-/* DECORATIONS */
+/* TECH DECORATIONS */
 .decor {
     position: absolute;
     z-index: 2;
@@ -336,7 +340,7 @@ img {
     right: 20%;
 }
 
-/* ARDUINO STYLE BOARD */
+/* ARDUINO BOARD */
 .arduino-board {
     width: 190px;
     height: 115px;
@@ -360,6 +364,7 @@ img {
     border-radius: 10px;
     background: #020617;
     border: 1px solid rgba(125, 211, 252, 0.55);
+    box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.18);
 }
 
 .arduino-board::after {
@@ -440,7 +445,7 @@ img {
     opacity: 0.65;
 }
 
-/* FULLSCREEN */
+/* FULLSCREEN IMAGE */
 .fullscreen {
     position: fixed;
     inset: 0;
@@ -457,7 +462,7 @@ img {
     border-radius: 18px;
 }
 
-/* DOTS */
+/* NAVIGATION DOTS */
 .dots {
     position: fixed;
     bottom: 24px;
@@ -491,6 +496,10 @@ img {
 
 /* RESPONSIVE */
 @media(max-width: 900px) {
+    .slide {
+        padding: 14px;
+    }
+
     .card {
         width: 85vw;
         height: 85vh;
@@ -501,8 +510,13 @@ img {
         max-height: calc(85vh - 70px);
     }
 
-    p, li {
+    p,
+    li {
         font-size: 1.22rem;
+    }
+
+    img {
+        max-height: calc(85vh - 190px);
     }
 
     .sensor-icon {
@@ -523,6 +537,10 @@ img {
 }
 
 @media(max-width: 600px) {
+    .slide {
+        padding: 10px;
+    }
+
     .card {
         width: 85vw;
         height: 85vh;
@@ -546,7 +564,8 @@ img {
         font-size: 1.08rem;
     }
 
-    p, li {
+    p,
+    li {
         font-size: 1rem;
         line-height: 1.5;
     }
@@ -555,6 +574,10 @@ img {
     .info-table td {
         font-size: 0.9rem;
         padding: 10px;
+    }
+
+    img {
+        max-height: calc(85vh - 160px);
     }
 
     .sensor-icon,
@@ -566,6 +589,21 @@ img {
     .node {
         opacity: 0.18;
     }
+
+    .dots {
+        bottom: 14px;
+        gap: 8px;
+        padding: 8px 14px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dot.active-dot {
+        width: 22px;
+    }
 }
 </style>
 </head>
@@ -574,504 +612,526 @@ img {
 
 <div class="slides">
 
-<!-- SLIDE 1 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor glow-circle one"></div>
-        <div class="decor glow-circle two"></div>
-        <div class="decor circuit-line right"></div>
-        <div class="decor arduino-board">
-            <div class="pin-row top">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="pin-row bottom">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </div>
+    <!-- SLIDE 1 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor glow-circle one"></div>
+            <div class="decor glow-circle two"></div>
+            <div class="decor circuit-line right"></div>
 
-        <div class="content center-content">
-            <h1>Temperature and Humidity:<br>Data Gathering, Preparation, and Analysis</h1>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 2 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">👥</div>
-        <div class="decor binary">0101<br>1010<br>0110<br>1101</div>
-
-        <div class="content">
-            <h3>Presented by:<br><strong>TechTask Slayer</strong></h3>
-            <p>
-                Tristan Jay B. Palabrica<br>
-                Rodgie Magbanua<br>
-                John Kenneth Araojo<br>
-                John Wayne Bigsat<br>
-                Myka Jhade Cordero<br>
-                Althea Millan Diane Anilao
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 3 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor wave"></div>
-        <div class="decor sensor-icon">📡</div>
-
-        <div class="content center-content">
-            <h1>DATA GATHERING</h1>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 4 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🔧</div>
-        <div class="decor circuit-line left"></div>
-
-        <div class="content">
-            <h3>Device Used: Arduino Project</h3>
-            <h4>Major Components</h4>
-
-            <div class="table-wrap">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Arduino Uno R3</td>
-                            <td>Main controller that processes sensor data.</td>
-                        </tr>
-                        <tr>
-                            <td>DHT11 Sensor</td>
-                            <td>Measures temperature and humidity.</td>
-                        </tr>
-                        <tr>
-                            <td>RTC Module</td>
-                            <td>Provides accurate date and time for each recorded reading.</td>
-                        </tr>
-                        <tr>
-                            <td>SD Card Module</td>
-                            <td>Allows the Arduino to save the collected data to the SD card.</td>
-                        </tr>
-                        <tr>
-                            <td>SD Card</td>
-                            <td>Stores the recorded sensor readings for later transfer and analysis.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="decor arduino-board">
+                <div class="pin-row top">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="pin-row bottom">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
             </div>
 
-            <h4>How it works:</h4>
-            <p class="indent-text">
-                The Arduino gathers data from the sensor and saves each reading into the SD card every second.
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 5 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">📍</div>
-        <div class="decor node n1"></div>
-        <div class="decor node n4"></div>
-
-        <div class="content">
-            <h3>Location:</h3>
-            <p>Sitio Agutayan, Brgy. Cubay, San Enrique, Iloilo</p>
-
-            <br>
-
-            <h3>Date-Time Range:</h3>
-            <p>
-                April 26, 2026, 5:45:36 AM<br>
-                to<br>
-                May 3, 2026, around 6:00 AM
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 6 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🧹</div>
-        <div class="decor wave"></div>
-
-        <div class="content center-content">
-            <h1>DATA PREPARATION</h1>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 7 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">💾</div>
-        <div class="decor binary">RAW<br>CSV<br>DATA</div>
-
-        <div class="content">
-            <p class="indent-text">
-                After seven days of data gathering, the SD card was removed from the Arduino.
-            </p>
-
-            <br>
-
-            <p class="indent-text">
-                The files were transferred to the computer, combined into one file, and converted into <strong>raw.csv</strong>.
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 8 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">✅</div>
-        <div class="decor circuit-line right"></div>
-
-        <div class="content">
-            <h3>Things we did in data cleaning:</h3>
-            <ul>
-                <li>Loaded the raw data</li>
-                <li>Checked for problems</li>
-                <li>Fixed errors</li>
-                <li>Set correct formats</li>
-                <li>Saved the cleaned data</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 9 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">📁</div>
-        <div class="decor node n2"></div>
-        <div class="decor node n3"></div>
-
-        <div class="content">
-            <h3>FILES AFTER DATA PREPARATION</h3>
-
-            <div class="table-wrap">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>File</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>clean_seconds.csv</td>
-                            <td>Cleaned second-by-second data.</td>
-                        </tr>
-                        <tr>
-                            <td>cleaned_raw.csv</td>
-                            <td>Final hourly data prepared for analysis.</td>
-                        </tr>
-                        <tr>
-                            <td>hourly_notes.csv</td>
-                            <td>Shows whether the hourly record used the exact time or the nearest-second record.</td>
-                        </tr>
-                        <tr>
-                            <td>hourly.txt</td>
-                            <td>Hourly data grouped by day for easier checking and presentation.</td>
-                        </tr>
-                        <tr>
-                            <td>summary.csv</td>
-                            <td>Summary of the cleaning results.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="content center-content">
+                <h1>Temperature and Humidity:<br>Data Gathering, Preparation, and Analysis</h1>
             </div>
         </div>
     </div>
-</div>
 
-<!-- SLIDE 10 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">📊</div>
-        <div class="decor glow-circle one"></div>
+    <!-- SLIDE 2 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">👥</div>
+            <div class="decor binary">0101<br>1010<br>0110<br>1101</div>
 
-        <div class="content center-content">
-            <h1>DATA ANALYSIS</h1>
-        </div>
-    </div>
-</div>
+            <div class="content">
+                <h3>Presented by:<br><strong>TechTask Slayer</strong></h3>
 
-<!-- SLIDE 11 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">📈</div>
-        <div class="decor circuit-line left"></div>
-
-        <div class="content">
-            <h3>Things we did in data analysis:</h3>
-
-            <ul>
-                <li>Loaded cleaned data</li>
-                <li>Checked prepared records</li>
-                <li>Prepared data for computation</li>
-                <li>Calculated averages</li>
-                <li>Found important results</li>
-                <li>Created graphs</li>
-                <li>Saved analysis outputs</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 12 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🗂️</div>
-        <div class="decor binary">AVG<br>PNG<br>TXT<br>CSV</div>
-
-        <div class="content">
-            <h3>FILES AFTER DATA ANALYSIS</h3>
-
-            <div class="table-wrap">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>File</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>avg.csv</td>
-                            <td>Numeric average table.</td>
-                        </tr>
-                        <tr>
-                            <td>avg_presentation.csv</td>
-                            <td>Presentation-ready average table.</td>
-                        </tr>
-                        <tr>
-                            <td>findings_table.csv</td>
-                            <td>Main findings table.</td>
-                        </tr>
-                        <tr>
-                            <td>findings.txt</td>
-                            <td>Written findings summary.</td>
-                        </tr>
-                        <tr>
-                            <td>temp_graph.png</td>
-                            <td>Temperature graph.</td>
-                        </tr>
-                        <tr>
-                            <td>humidity_graph.png</td>
-                            <td>Humidity graph.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>
+                    Tristan Jay B. Palabrica<br>
+                    Rodgie Magbanua<br>
+                    John Kenneth Araojo<br>
+                    John Wayne Bigsat<br>
+                    Myka Jhade Cordero<br>
+                    Althea Millan Diane Anilao
+                </p>
             </div>
         </div>
     </div>
-</div>
 
-<!-- SLIDE 13 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🌡️</div>
+    <!-- SLIDE 3 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor wave"></div>
+            <div class="decor sensor-icon">📡</div>
 
-        <div class="content">
-            <h3>TEMPERATURE GRAPH</h3>
-            <img class="zoomable" src="img1.png" alt="Temperature Graph">
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 14 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">💧</div>
-
-        <div class="content">
-            <h3>HUMIDITY GRAPH</h3>
-            <img class="zoomable" src="img2.png" alt="Humidity Graph">
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 15 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🔍</div>
-        <div class="decor node n1"></div>
-        <div class="decor node n4"></div>
-
-        <div class="content">
-            <h3>MAIN FINDINGS</h3>
-            <h4>Temperature and Humidity Findings</h4>
-
-            <div class="table-wrap">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Finding</th>
-                            <th>Value</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Temperature</td>
-                            <td>Highest Average Temperature</td>
-                            <td>34.96 °C</td>
-                            <td>2:00 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Temperature</td>
-                            <td>Lowest Average Temperature</td>
-                            <td>26.21 °C</td>
-                            <td>6:00 AM</td>
-                        </tr>
-                        <tr>
-                            <td>Humidity</td>
-                            <td>Highest Average Humidity</td>
-                            <td>78.86%</td>
-                            <td>5:00 AM</td>
-                        </tr>
-                        <tr>
-                            <td>Humidity</td>
-                            <td>Lowest Average Humidity</td>
-                            <td>45.57%</td>
-                            <td>2:00 PM</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h4 class="general-observation-title">General Observation:</h4>
-
-            <p class="general-observation-text">
-                Temperature generally increases during the daytime and decreases during nighttime or early morning.
-            </p>
-
-            <p class="general-observation-text">
-                Humidity shows the opposite pattern: it becomes higher when temperature is lower and lower when temperature is higher.
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 16 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">⚠️</div>
-        <div class="decor circuit-line right"></div>
-
-        <div class="content">
-            <h3>POTENTIAL SOURCES OF ERROR:</h3>
-
-            <ul>
-                <li>Brownout or power interruption</li>
-                <li>Loose connection</li>
-                <li>Sensor malfunction</li>
-                <li>Missing seconds</li>
-                <li>SD card saving error</li>
-                <li>Sudden weather changes</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 17 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">🛠️</div>
-        <div class="decor arduino-board">
-            <div class="pin-row top">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="pin-row bottom">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
+            <div class="content center-content">
+                <h1>DATA GATHERING</h1>
             </div>
         </div>
-
-        <div class="content">
-            <h3>WAYS TO IMPROVE THE PROCESS</h3>
-
-            <ul>
-                <li>Use stable power supply</li>
-                <li>Secure all connections</li>
-                <li>Keep the sensor in one fixed location</li>
-                <li>Protect the device from direct rain and sunlight</li>
-                <li>Check all components before recording</li>
-                <li>Record weather observations</li>
-            </ul>
-        </div>
     </div>
-</div>
 
-<!-- SLIDE 18 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor sensor-icon">📝</div>
-        <div class="decor glow-circle two"></div>
+    <!-- SLIDE 4 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🔧</div>
+            <div class="decor circuit-line left"></div>
 
-        <div class="content">
-            <h3 style="text-align: center;">SUMMARY OF THE PROCESS</h3>
+            <div class="content">
+                <h3>Device Used: Arduino Project</h3>
 
-            <p class="indent-text">
-                The group collected seven days of temperature and humidity data using an Arduino-based device.
-            </p>
+                <h4>Major Components</h4>
 
-            <br>
+                <div class="table-wrap">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Arduino Uno R3</td>
+                                <td>Main controller that processes sensor data.</td>
+                            </tr>
+                            <tr>
+                                <td>DHT11 Sensor</td>
+                                <td>Measures temperature and humidity.</td>
+                            </tr>
+                            <tr>
+                                <td>RTC Module</td>
+                                <td>Provides accurate date and time.</td>
+                            </tr>
+                            <tr>
+                                <td>SD Card Module</td>
+                                <td>Allows Arduino to save data to the SD card.</td>
+                            </tr>
+                            <tr>
+                                <td>SD Card</td>
+                                <td>Stores the recorded sensor readings.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <p class="indent-text">
-                The data were cleaned in R Studio, filtered into hourly records, analyzed, and presented using tables and graphs.
-            </p>
-        </div>
-    </div>
-</div>
+                <h4>How it works:</h4>
 
-<!-- SLIDE 19 -->
-<div class="slide">
-    <div class="card">
-        <div class="decor glow-circle one"></div>
-        <div class="decor glow-circle two"></div>
-        <div class="decor circuit-line right"></div>
-        <div class="decor arduino-board">
-            <div class="pin-row top">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
+                <p class="indent-text">
+                    The Arduino gathers data from the sensor and saves each reading into the SD card every second.
+                </p>
             </div>
-            <div class="pin-row bottom">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </div>
-
-        <div class="content center-content">
-            <h1>Thank you for listening.</h1>
         </div>
     </div>
-</div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">📍</div>
+            <div class="decor node n1"></div>
+            <div class="decor node n4"></div>
+
+            <div class="content">
+                <h3>Location:</h3>
+
+                <p>Sitio Agutayan, Brgy. Cubay, San Enrique, Iloilo</p>
+
+                <br>
+
+                <h3>Date-Time Recording Range:</h3>
+
+                <p>
+                    April 26, 2026, 5:45:36 AM<br>
+                    to<br>
+                    May 3, 2026, around 6:00 AM
+                </p>
+
+                <br>
+
+                <p class="indent-text">
+                    But we started our data to exactly April 27, 2026, 12:00:00 AM up to May 4, 2026, 12:00:00 AM.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🧹</div>
+            <div class="decor wave"></div>
+
+            <div class="content center-content">
+                <h1>DATA PREPARATION</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">💾</div>
+            <div class="decor binary">RAW<br>CSV<br>DATA</div>
+
+            <div class="content">
+                <p class="indent-text">
+                    After seven days of data gathering, the SD card was removed from the Arduino.
+                </p>
+
+                <br>
+
+                <p class="indent-text">
+                    The files were transferred to the computer, combined into one file, and converted into <strong>raw.csv</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">✅</div>
+            <div class="decor circuit-line right"></div>
+
+            <div class="content">
+                <h3>Things we did in data cleaning:</h3>
+
+                <ul>
+                    <li>Loaded the raw data</li>
+                    <li>Checked for problems</li>
+                    <li>Fixed errors</li>
+                    <li>Set correct formats</li>
+                    <li>Saved the cleaned data</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">📁</div>
+            <div class="decor node n2"></div>
+            <div class="decor node n3"></div>
+
+            <div class="content">
+                <h3>FILES AFTER DATA PREPARATION</h3>
+
+                <div class="table-wrap">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>clean_seconds.csv</td>
+                                <td>Cleaned second-by-second data.</td>
+                            </tr>
+                            <tr>
+                                <td>cleaned_raw.csv</td>
+                                <td>Final hourly data for analysis.</td>
+                            </tr>
+                            <tr>
+                                <td>hourly_notes.csv</td>
+                                <td>Shows exact or nearest-second records.</td>
+                            </tr>
+                            <tr>
+                                <td>hourly.txt</td>
+                                <td>Hourly data grouped by day.</td>
+                            </tr>
+                            <tr>
+                                <td>summary.csv</td>
+                                <td>Summary of cleaning results.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">📊</div>
+            <div class="decor glow-circle one"></div>
+
+            <div class="content center-content">
+                <h1>DATA ANALYSIS</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">📈</div>
+            <div class="decor circuit-line left"></div>
+
+            <div class="content">
+                <h3>Things we did in data analysis:</h3>
+
+                <ul>
+                    <li>Loaded cleaned data</li>
+                    <li>Checked prepared records</li>
+                    <li>Prepared data for computation</li>
+                    <li>Calculated averages</li>
+                    <li>Found important results</li>
+                    <li>Created graphs</li>
+                    <li>Saved analysis outputs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🗂️</div>
+            <div class="decor binary">AVG<br>PNG<br>TXT<br>CSV</div>
+
+            <div class="content">
+                <h3>FILES AFTER DATA ANALYSIS</h3>
+
+                <div class="table-wrap">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>avg.csv</td>
+                                <td>Numeric average table.</td>
+                            </tr>
+                            <tr>
+                                <td>avg_presentation.csv</td>
+                                <td>Presentation-ready average table.</td>
+                            </tr>
+                            <tr>
+                                <td>findings_table.csv</td>
+                                <td>Main findings table.</td>
+                            </tr>
+                            <tr>
+                                <td>findings.txt</td>
+                                <td>Written findings summary.</td>
+                            </tr>
+                            <tr>
+                                <td>temp_graph.png</td>
+                                <td>Temperature graph.</td>
+                            </tr>
+                            <tr>
+                                <td>humidity_graph.png</td>
+                                <td>Humidity graph.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🌡️</div>
+
+            <div class="content">
+                <h3>TEMPERATURE GRAPH</h3>
+                <img class="zoomable" src="img1.png" alt="Temperature Graph">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 14 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">💧</div>
+
+            <div class="content">
+                <h3>HUMIDITY GRAPH</h3>
+                <img class="zoomable" src="img2.png" alt="Humidity Graph">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 15 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🔍</div>
+            <div class="decor node n1"></div>
+            <div class="decor node n4"></div>
+
+            <div class="content">
+                <h3>MAIN FINDINGS</h3>
+
+                <h4>Temperature and Humidity Findings</h4>
+
+                <div class="table-wrap">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Finding</th>
+                                <th>Value</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>Highest Average Temperature</td>
+                                <td>34.96 °C</td>
+                                <td>2:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>Lowest Average Temperature</td>
+                                <td>26.21 °C</td>
+                                <td>6:00 AM</td>
+                            </tr>
+                            <tr>
+                                <td>Humidity</td>
+                                <td>Highest Average Humidity</td>
+                                <td>78.86%</td>
+                                <td>5:00 AM</td>
+                            </tr>
+                            <tr>
+                                <td>Humidity</td>
+                                <td>Lowest Average Humidity</td>
+                                <td>45.57%</td>
+                                <td>2:00 PM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="general-observation-title">General Observation:</h4>
+
+                <p class="general-observation-text">
+                    The graph shows the average temperature and humidity for each hourly time segment across seven days.
+                </p>
+
+                <p class="general-observation-text">
+                    Temperature generally increases during the daytime and decreases during nighttime or early morning.
+                </p>
+
+                <p class="general-observation-text">
+                    Humidity usually shows the opposite pattern, becoming higher when temperature is lower and lower when temperature is higher.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 16 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">⚠️</div>
+            <div class="decor circuit-line right"></div>
+
+            <div class="content">
+                <h3>POTENTIAL SOURCES OF ERROR:</h3>
+
+                <ul>
+                    <li>Brownout or power interruption</li>
+                    <li>Loose connection</li>
+                    <li>Sensor malfunction</li>
+                    <li>Missing seconds</li>
+                    <li>SD card saving error</li>
+                    <li>Sudden weather changes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 17 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">🛠️</div>
+
+            <div class="decor arduino-board">
+                <div class="pin-row top">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="pin-row bottom">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="content">
+                <h3>WAYS TO IMPROVE THE PROCESS</h3>
+
+                <ul>
+                    <li>Use stable power supply</li>
+                    <li>Secure all connections</li>
+                    <li>Keep the sensor in one fixed location</li>
+                    <li>Protect the device from direct rain and sunlight</li>
+                    <li>Check all components before recording</li>
+                    <li>Record weather observations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 18 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor sensor-icon">📝</div>
+            <div class="decor glow-circle two"></div>
+
+            <div class="content">
+                <h3 style="text-align: center;">SUMMARY OF THE PROCESS</h3>
+
+                <p class="indent-text">
+                    The group collected seven days of temperature and humidity data using an Arduino-based device.
+                </p>
+
+                <br>
+
+                <p class="indent-text">
+                    The data were cleaned in R Studio, filtered into hourly records, analyzed, and presented using tables and graphs.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 19 -->
+    <div class="slide">
+        <div class="card">
+            <div class="decor glow-circle one"></div>
+            <div class="decor glow-circle two"></div>
+            <div class="decor circuit-line right"></div>
+
+            <div class="decor arduino-board">
+                <div class="pin-row top">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="pin-row bottom">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="content center-content">
+                <h1>Thank you for listening.</h1>
+            </div>
+        </div>
+    </div>
 
 </div>
 
+<!-- FULLSCREEN IMAGE MODAL -->
 <div class="fullscreen" id="fullscreen">
     <img id="fullImg" alt="Fullscreen Image">
 </div>
 
+<!-- NAVIGATION DOTS -->
 <div class="dots" id="dots"></div>
 
 <script>
@@ -1083,7 +1143,7 @@ let zoomActive = false;
 function createDots() {
     dotsContainer.innerHTML = "";
 
-    slides.forEach((slide, index) => {
+    slides.forEach(function(slide, index) {
         const dot = document.createElement("div");
         dot.className = "dot";
 
@@ -1113,6 +1173,7 @@ function goToSlide(index) {
     slides[currentSlide].classList.remove("active");
     currentSlide = index;
     slides[currentSlide].classList.add("active");
+
     updateDots();
 }
 
@@ -1128,6 +1189,7 @@ function prevSlide() {
     }
 }
 
+/* KEYBOARD NAVIGATION */
 document.addEventListener("keydown", function(e) {
     if (zoomActive) {
         if (e.key === "Escape") {
@@ -1147,6 +1209,7 @@ document.addEventListener("keydown", function(e) {
     }
 });
 
+/* MOUSE WHEEL NAVIGATION */
 let wheelLock = false;
 
 window.addEventListener("wheel", function(e) {
@@ -1159,11 +1222,13 @@ window.addEventListener("wheel", function(e) {
     }
 
     wheelLock = true;
+
     setTimeout(function() {
         wheelLock = false;
     }, 220);
 });
 
+/* TOUCH SWIPE NAVIGATION */
 let startX = 0;
 
 document.addEventListener("touchstart", function(e) {
@@ -1185,6 +1250,7 @@ document.addEventListener("touchend", function(e) {
     }
 });
 
+/* IMAGE ZOOM */
 function openFullscreen(img) {
     const fullscreen = document.getElementById("fullscreen");
     const fullImg = document.getElementById("fullImg");
@@ -1212,6 +1278,7 @@ document.querySelectorAll(".zoomable").forEach(function(img) {
 
 document.getElementById("fullscreen").addEventListener("click", closeFullscreen);
 
+/* INITIALIZE */
 slides[0].classList.add("active");
 createDots();
 </script>
