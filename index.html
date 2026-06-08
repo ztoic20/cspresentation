@@ -3,35 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temperature and Humidity Presentation</title>
-
+<title>Database Defended Presentation</title>
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Segoe UI", sans-serif;
 }
 
-html,
 body {
-    width: 100%;
-    height: 100%;
     overflow: hidden;
+    background: linear-gradient(135deg, #020617, #06111f, #082f49);
 }
 
-body {
-    background:
-        radial-gradient(circle at top left, rgba(0, 174, 255, 0.30), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(0, 255, 221, 0.18), transparent 34%),
-        linear-gradient(135deg, #020617, #06111f, #081c33);
-}
-
-/* SLIDES */
 .slides {
-    position: relative;
     width: 100%;
     height: 100vh;
+    position: relative;
 }
 
 .slide {
@@ -43,426 +32,58 @@ body {
     padding: 20px;
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: 0.3s ease;
 }
 
 .slide.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
 }
 
-/* MAIN CARD */
 .card {
-    position: relative;
-    overflow: hidden;
     width: 85vw;
     height: 85vh;
-    max-width: 85vw;
-    max-height: 85vh;
-    padding: clamp(26px, 4vw, 56px);
-    border-radius: 34px;
-    background: rgba(7, 20, 38, 0.82);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    box-shadow:
-        0 0 40px rgba(56, 189, 248, 0.25),
-        18px 18px 35px rgba(0, 0, 0, 0.48),
-        inset 3px 3px 10px rgba(255, 255, 255, 0.08),
-        inset -4px -4px 12px rgba(0, 183, 255, 0.12);
+    border-radius: 35px;
+    padding: 50px;
+    background: rgba(7, 20, 38, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* TECH GRID */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-    background-size: 42px 42px;
-    opacity: 0.55;
-    z-index: 1;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    width: 460px;
-    height: 460px;
-    right: -170px;
-    bottom: -180px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 183, 255, 0.30), rgba(2, 6, 23, 0.02));
-    z-index: 1;
-}
-
-/* CONTENT */
-.content {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 95%;
-    max-height: calc(85vh - 90px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    text-align: left;
-    padding-right: 12px;
-}
-
-.center-content {
     text-align: center;
-    overflow-y: hidden;
-    padding-right: 0;
+    overflow: hidden;
 }
 
-.content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.content::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-}
-
-.content::-webkit-scrollbar-thumb {
-    background: rgba(56, 189, 248, 0.65);
-    border-radius: 20px;
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-    background: rgba(103, 232, 249, 0.85);
-}
-
-/* TEXT */
 h1 {
-    font-size: clamp(2.2rem, 4.5vw, 3.85rem);
     color: #e0f7ff;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
     font-weight: 900;
-    line-height: 1.15;
-    margin-bottom: 24px;
-    text-shadow: 0 0 18px rgba(56, 189, 248, 0.38);
-}
-
-h3 {
-    font-size: clamp(1.7rem, 3.2vw, 2.75rem);
-    color: #38bdf8;
-    font-weight: 850;
     line-height: 1.2;
-    margin-bottom: 22px;
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.55);
 }
 
-h4 {
-    font-size: clamp(1.25rem, 2.3vw, 1.95rem);
-    color: #7dd3fc;
-    font-weight: 850;
-    margin: 16px 0 9px;
+h2 {
+    color: #38bdf8;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 25px;
 }
 
-p,
-li {
-    font-size: clamp(1.12rem, 1.9vw, 1.68rem);
-    line-height: 1.65;
-    color: #dbeafe;
-}
-
-.indent-text {
-    text-indent: 2.5em;
-    text-align: justify;
-}
-
-.general-observation-title {
-    font-size: clamp(1.05rem, 1.8vw, 1.45rem);
-    margin-top: 14px;
-    margin-bottom: 6px;
-}
-
-.general-observation-text {
-    font-size: clamp(0.95rem, 1.45vw, 1.18rem);
-    line-height: 1.45;
-    text-indent: 2.5em;
-    text-align: justify;
-    color: #dbeafe;
-}
-
-ul {
-    text-align: left;
-    display: inline-block;
-    margin-top: 10px;
-    padding-left: 35px;
-}
-
-li {
-    margin: 7px 0;
-}
-
-strong {
-    color: #67e8f9;
-    font-weight: 850;
-}
-
-/* TABLES */
-.table-wrap {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 15px;
-    border-radius: 18px;
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    box-shadow: 0 0 22px rgba(56, 189, 248, 0.16);
-}
-
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(2, 6, 23, 0.58);
-    color: #dbeafe;
-}
-
-.info-table th {
-    background: rgba(56, 189, 248, 0.22);
-    color: #67e8f9;
-    font-size: clamp(1.1rem, 1.7vw, 1.45rem);
-    text-align: left;
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.35);
-}
-
-.info-table td {
-    font-size: clamp(1rem, 1.55vw, 1.32rem);
-    line-height: 1.5;
-    padding: 13px 16px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    vertical-align: top;
-}
-
-.info-table tr:last-child td {
-    border-bottom: none;
-}
-
-.info-table td:first-child {
-    color: #67e8f9;
-    font-weight: 800;
-}
-
-/* IMAGES */
 img {
     max-width: 100%;
-    max-height: calc(85vh - 210px);
-    object-fit: contain;
+    max-height: 62vh;
     border-radius: 22px;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    box-shadow:
-        0 0 22px rgba(56, 189, 248, 0.28),
-        10px 10px 26px rgba(0, 0, 0, 0.35);
 }
 
-/* TECH DECORATIONS */
-.decor {
-    position: absolute;
-    z-index: 2;
-    pointer-events: none;
+.defended {
+    color: #22c55e;
+    margin-top: 35px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
 }
 
-.glow-circle {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    border: 2px solid rgba(56, 189, 248, 0.35);
-    box-shadow:
-        0 0 30px rgba(56, 189, 248, 0.35),
-        inset 0 0 25px rgba(56, 189, 248, 0.14);
-}
-
-.glow-circle.one {
-    top: 7%;
-    left: 6%;
-}
-
-.glow-circle.two {
-    bottom: 8%;
-    right: 7%;
-    width: 120px;
-    height: 120px;
-}
-
-.circuit-line {
-    width: 230px;
-    height: 95px;
-    border-top: 4px solid rgba(56, 189, 248, 0.45);
-    border-right: 4px solid rgba(56, 189, 248, 0.45);
-    border-radius: 0 28px 0 0;
-}
-
-.circuit-line.left {
-    bottom: 10%;
-    left: 8%;
-}
-
-.circuit-line.right {
-    top: 11%;
-    right: 9%;
-    transform: rotate(180deg);
-}
-
-.node {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #38bdf8;
-    box-shadow: 0 0 16px rgba(56, 189, 248, 0.85);
-}
-
-.node.n1 {
-    top: 18%;
-    left: 20%;
-}
-
-.node.n2 {
-    top: 28%;
-    right: 18%;
-}
-
-.node.n3 {
-    bottom: 20%;
-    left: 22%;
-}
-
-.node.n4 {
-    bottom: 17%;
-    right: 20%;
-}
-
-/* ARDUINO BOARD */
-.arduino-board {
-    width: 190px;
-    height: 115px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(14, 116, 144, 0.58), rgba(15, 23, 42, 0.9));
-    border: 2px solid rgba(103, 232, 249, 0.45);
-    box-shadow:
-        0 0 25px rgba(34, 211, 238, 0.28),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.08);
-    bottom: 8%;
-    left: 7%;
-}
-
-.arduino-board::before {
-    content: "";
-    position: absolute;
-    width: 68px;
-    height: 42px;
-    top: 35px;
-    left: 58px;
-    border-radius: 10px;
-    background: #020617;
-    border: 1px solid rgba(125, 211, 252, 0.55);
-    box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.18);
-}
-
-.arduino-board::after {
-    content: "";
-    position: absolute;
-    width: 28px;
-    height: 20px;
-    top: 45px;
-    right: 18px;
-    border-radius: 5px;
-    background: #94a3b8;
-}
-
-.pin-row {
-    position: absolute;
-    display: flex;
-    gap: 5px;
-}
-
-.pin-row.top {
-    top: 10px;
-    left: 18px;
-}
-
-.pin-row.bottom {
-    bottom: 10px;
-    left: 18px;
-}
-
-.pin-row span {
-    width: 8px;
-    height: 12px;
-    background: #67e8f9;
-    border-radius: 2px;
-    box-shadow: 0 0 7px rgba(103, 232, 249, 0.65);
-}
-
-.sensor-icon {
-    top: 7%;
-    right: 7%;
-    width: 105px;
-    height: 105px;
-    border-radius: 28px;
-    background: rgba(15, 23, 42, 0.84);
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    box-shadow:
-        0 0 22px rgba(56, 189, 248, 0.28),
-        inset 3px 3px 10px rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #67e8f9;
-    font-size: 2.7rem;
-}
-
-.binary {
-    bottom: 8%;
-    right: 8%;
-    color: rgba(125, 211, 252, 0.35);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    text-align: left;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.wave {
-    width: 240px;
-    height: 80px;
-    left: 7%;
-    top: 8%;
-    background:
-        linear-gradient(90deg, transparent 0 8%, rgba(56,189,248,0.55) 8% 10%, transparent 10% 18%),
-        linear-gradient(90deg, transparent 0 20%, rgba(56,189,248,0.55) 20% 22%, transparent 22% 35%),
-        linear-gradient(90deg, transparent 0 42%, rgba(56,189,248,0.55) 42% 44%, transparent 44% 60%),
-        linear-gradient(90deg, transparent 0 70%, rgba(56,189,248,0.55) 70% 72%, transparent 72% 100%);
-    border-bottom: 3px solid rgba(56, 189, 248, 0.45);
-    opacity: 0.65;
-}
-
-/* FULLSCREEN IMAGE */
-.fullscreen {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.92);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.fullscreen img {
-    max-width: 95%;
-    max-height: 95%;
-    border-radius: 18px;
-}
-
-/* NAVIGATION DOTS */
 .dots {
     position: fixed;
     bottom: 24px;
@@ -470,140 +91,35 @@ img {
     transform: translateX(-50%);
     display: flex;
     gap: 12px;
-    z-index: 200;
-    background: rgba(2, 6, 23, 0.72);
-    border: 1px solid rgba(56, 189, 248, 0.28);
-    padding: 10px 20px;
-    border-radius: 40px;
-    backdrop-filter: blur(12px);
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     background: rgba(125, 211, 252, 0.45);
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .dot.active-dot {
-    width: 28px;
-    border-radius: 16px;
+    width: 30px;
+    border-radius: 20px;
     background: #38bdf8;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
 }
 
-/* RESPONSIVE */
-@media(max-width: 900px) {
-    .slide {
-        padding: 14px;
-    }
-
-    .card {
-        width: 85vw;
-        height: 85vh;
-        padding: 35px;
-    }
-
-    .content {
-        max-height: calc(85vh - 70px);
-    }
-
-    p,
-    li {
-        font-size: 1.22rem;
-    }
-
-    img {
-        max-height: calc(85vh - 190px);
-    }
-
-    .sensor-icon {
-        width: 75px;
-        height: 75px;
-        font-size: 1.9rem;
-    }
-
-    .arduino-board,
-    .binary,
-    .wave,
-    .glow-circle,
-    .circuit-line,
-    .node {
-        opacity: 0.42;
-        transform: scale(0.82);
-    }
+.fullscreen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-@media(max-width: 600px) {
-    .slide {
-        padding: 10px;
-    }
-
-    .card {
-        width: 85vw;
-        height: 85vh;
-        padding: 24px;
-    }
-
-    .content {
-        max-height: calc(85vh - 50px);
-        max-width: 100%;
-    }
-
-    h1 {
-        font-size: 1.85rem;
-    }
-
-    h3 {
-        font-size: 1.45rem;
-    }
-
-    h4 {
-        font-size: 1.08rem;
-    }
-
-    p,
-    li {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-    .info-table th,
-    .info-table td {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
-
-    img {
-        max-height: calc(85vh - 160px);
-    }
-
-    .sensor-icon,
-    .arduino-board,
-    .binary,
-    .wave,
-    .glow-circle,
-    .circuit-line,
-    .node {
-        opacity: 0.18;
-    }
-
-    .dots {
-        bottom: 14px;
-        gap: 8px;
-        padding: 8px 14px;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-    }
-
-    .dot.active-dot {
-        width: 22px;
-    }
+.fullscreen img {
+    max-width: 95%;
+    max-height: 95%;
 }
 </style>
 </head>
@@ -612,526 +128,42 @@ img {
 
 <div class="slides">
 
-    <!-- SLIDE 1 -->
+    <div class="slide active">
+        <div class="card">
+            <h1>A BARCODE-DRIVEN SALES AND CONTAINER INVENTORY MANAGEMENT SYSTEM FOR WATER REFILING STATIONS</h1>
+        </div>
+    </div>
+
     <div class="slide">
         <div class="card">
-            <div class="decor glow-circle one"></div>
-            <div class="decor glow-circle two"></div>
-            <div class="decor circuit-line right"></div>
-
-            <div class="decor arduino-board">
-                <div class="pin-row top">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="pin-row bottom">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </div>
-
-            <div class="content center-content">
-                <h1>Temperature and Humidity:<br>Data Gathering, Preparation, and Analysis</h1>
+            <div>
+                <h2>ERD DIAGRAM</h2>
+                <img class="zoomable" src="img1.png" alt="ERD Diagram">
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 2 -->
     <div class="slide">
         <div class="card">
-            <div class="decor sensor-icon">👥</div>
-            <div class="decor binary">0101<br>1010<br>0110<br>1101</div>
-
-            <div class="content">
-                <h3>Presented by:<br><strong>TechTask Slayer</strong></h3>
-
-                <p>
-                    Tristan Jay B. Palabrica<br>
-                    Rodgie Magbanua<br>
-                    John Kenneth Araojo<br>
-                    John Wayne Bigsat<br>
-                    Myka Jhade Cordero<br>
-                    Althea Millan Diane Anilao
-                </p>
-            </div>
+            <h1>THANK YOU!!!</h1>
         </div>
     </div>
 
-    <!-- SLIDE 3 -->
     <div class="slide">
         <div class="card">
-            <div class="decor wave"></div>
-            <div class="decor sensor-icon">📡</div>
-
-            <div class="content center-content">
-                <h1>DATA GATHERING</h1>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 4 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🔧</div>
-            <div class="decor circuit-line left"></div>
-
-            <div class="content">
-                <h3>Device Used: Arduino Project</h3>
-
-                <h4>Major Components</h4>
-
-                <div class="table-wrap">
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arduino Uno R3</td>
-                                <td>Main controller that processes sensor data.</td>
-                            </tr>
-                            <tr>
-                                <td>DHT11 Sensor</td>
-                                <td>Measures temperature and humidity.</td>
-                            </tr>
-                            <tr>
-                                <td>RTC Module</td>
-                                <td>Provides accurate date and time.</td>
-                            </tr>
-                            <tr>
-                                <td>SD Card Module</td>
-                                <td>Allows Arduino to save data to the SD card.</td>
-                            </tr>
-                            <tr>
-                                <td>SD Card</td>
-                                <td>Stores the recorded sensor readings.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h4>How it works:</h4>
-
-                <p class="indent-text">
-                    The Arduino gathers data from the sensor and saves each reading into the SD card every second.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 5 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">📍</div>
-            <div class="decor node n1"></div>
-            <div class="decor node n4"></div>
-
-            <div class="content">
-                <h3>Location:</h3>
-
-                <p>Sitio Agutayan, Brgy. Cubay, San Enrique, Iloilo</p>
-
-                <br>
-
-                <h3>Date-Time Recording Range:</h3>
-
-                <p>
-                    April 26, 2026, 5:45:36 AM<br>
-                    to<br>
-                    May 3, 2026, around 6:00 AM
-                </p>
-
-                <br>
-
-                <p class="indent-text">
-                    But we started our data to exactly April 27, 2026, 12:00:00 AM up to May 4, 2026, 12:00:00 AM.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 6 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🧹</div>
-            <div class="decor wave"></div>
-
-            <div class="content center-content">
-                <h1>DATA PREPARATION</h1>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 7 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">💾</div>
-            <div class="decor binary">RAW<br>CSV<br>DATA</div>
-
-            <div class="content">
-                <p class="indent-text">
-                    After seven days of data gathering, the SD card was removed from the Arduino.
-                </p>
-
-                <br>
-
-                <p class="indent-text">
-                    The files were transferred to the computer, combined into one file, and converted into <strong>raw.csv</strong>.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 8 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">✅</div>
-            <div class="decor circuit-line right"></div>
-
-            <div class="content">
-                <h3>Things we did in data cleaning:</h3>
-
-                <ul>
-                    <li>Loaded the raw data</li>
-                    <li>Checked for problems</li>
-                    <li>Fixed errors</li>
-                    <li>Set correct formats</li>
-                    <li>Saved the cleaned data</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 9 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">📁</div>
-            <div class="decor node n2"></div>
-            <div class="decor node n3"></div>
-
-            <div class="content">
-                <h3>FILES AFTER DATA PREPARATION</h3>
-
-                <div class="table-wrap">
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>File</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>clean_seconds.csv</td>
-                                <td>Cleaned second-by-second data.</td>
-                            </tr>
-                            <tr>
-                                <td>cleaned_raw.csv</td>
-                                <td>Final hourly data for analysis.</td>
-                            </tr>
-                            <tr>
-                                <td>hourly_notes.csv</td>
-                                <td>Shows exact or nearest-second records.</td>
-                            </tr>
-                            <tr>
-                                <td>hourly.txt</td>
-                                <td>Hourly data grouped by day.</td>
-                            </tr>
-                            <tr>
-                                <td>summary.csv</td>
-                                <td>Summary of cleaning results.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 10 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">📊</div>
-            <div class="decor glow-circle one"></div>
-
-            <div class="content center-content">
-                <h1>DATA ANALYSIS</h1>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 11 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">📈</div>
-            <div class="decor circuit-line left"></div>
-
-            <div class="content">
-                <h3>Things we did in data analysis:</h3>
-
-                <ul>
-                    <li>Loaded cleaned data</li>
-                    <li>Checked prepared records</li>
-                    <li>Prepared data for computation</li>
-                    <li>Calculated averages</li>
-                    <li>Found important results</li>
-                    <li>Created graphs</li>
-                    <li>Saved analysis outputs</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 12 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🗂️</div>
-            <div class="decor binary">AVG<br>PNG<br>TXT<br>CSV</div>
-
-            <div class="content">
-                <h3>FILES AFTER DATA ANALYSIS</h3>
-
-                <div class="table-wrap">
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>File</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>avg.csv</td>
-                                <td>Numeric average table.</td>
-                            </tr>
-                            <tr>
-                                <td>avg_presentation.csv</td>
-                                <td>Presentation-ready average table.</td>
-                            </tr>
-                            <tr>
-                                <td>findings_table.csv</td>
-                                <td>Main findings table.</td>
-                            </tr>
-                            <tr>
-                                <td>findings.txt</td>
-                                <td>Written findings summary.</td>
-                            </tr>
-                            <tr>
-                                <td>temp_graph.png</td>
-                                <td>Temperature graph.</td>
-                            </tr>
-                            <tr>
-                                <td>humidity_graph.png</td>
-                                <td>Humidity graph.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 13 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🌡️</div>
-
-            <div class="content">
-                <h3>TEMPERATURE GRAPH</h3>
-                <img class="zoomable" src="img1.png" alt="Temperature Graph">
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 14 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">💧</div>
-
-            <div class="content">
-                <h3>HUMIDITY GRAPH</h3>
-                <img class="zoomable" src="img2.png" alt="Humidity Graph">
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 15 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🔍</div>
-            <div class="decor node n1"></div>
-            <div class="decor node n4"></div>
-
-            <div class="content">
-                <h3>MAIN FINDINGS</h3>
-
-                <h4>Temperature and Humidity Findings</h4>
-
-                <div class="table-wrap">
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Finding</th>
-                                <th>Value</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Temperature</td>
-                                <td>Highest Average Temperature</td>
-                                <td>34.96 °C</td>
-                                <td>2:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td>Temperature</td>
-                                <td>Lowest Average Temperature</td>
-                                <td>26.21 °C</td>
-                                <td>6:00 AM</td>
-                            </tr>
-                            <tr>
-                                <td>Humidity</td>
-                                <td>Highest Average Humidity</td>
-                                <td>78.86%</td>
-                                <td>5:00 AM</td>
-                            </tr>
-                            <tr>
-                                <td>Humidity</td>
-                                <td>Lowest Average Humidity</td>
-                                <td>45.57%</td>
-                                <td>2:00 PM</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h4 class="general-observation-title">General Observation:</h4>
-
-                <p class="general-observation-text">
-                    The graph shows the average temperature and humidity for each hourly time segment across seven days.
-                </p>
-
-                <p class="general-observation-text">
-                    Temperature generally increases during the daytime and decreases during nighttime or early morning.
-                </p>
-
-                <p class="general-observation-text">
-                    Humidity usually shows the opposite pattern, becoming higher when temperature is lower and lower when temperature is higher.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 16 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">⚠️</div>
-            <div class="decor circuit-line right"></div>
-
-            <div class="content">
-                <h3>POTENTIAL SOURCES OF ERROR:</h3>
-
-                <ul>
-                    <li>Brownout or power interruption</li>
-                    <li>Loose connection</li>
-                    <li>Sensor malfunction</li>
-                    <li>Missing seconds</li>
-                    <li>SD card saving error</li>
-                    <li>Sudden weather changes</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 17 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">🛠️</div>
-
-            <div class="decor arduino-board">
-                <div class="pin-row top">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="pin-row bottom">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </div>
-
-            <div class="content">
-                <h3>WAYS TO IMPROVE THE PROCESS</h3>
-
-                <ul>
-                    <li>Use stable power supply</li>
-                    <li>Secure all connections</li>
-                    <li>Keep the sensor in one fixed location</li>
-                    <li>Protect the device from direct rain and sunlight</li>
-                    <li>Check all components before recording</li>
-                    <li>Record weather observations</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 18 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor sensor-icon">📝</div>
-            <div class="decor glow-circle two"></div>
-
-            <div class="content">
-                <h3 style="text-align: center;">SUMMARY OF THE PROCESS</h3>
-
-                <p class="indent-text">
-                    The group collected seven days of temperature and humidity data using an Arduino-based device.
-                </p>
-
-                <br>
-
-                <p class="indent-text">
-                    The data were cleaned in R Studio, filtered into hourly records, analyzed, and presented using tables and graphs.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIDE 19 -->
-    <div class="slide">
-        <div class="card">
-            <div class="decor glow-circle one"></div>
-            <div class="decor glow-circle two"></div>
-            <div class="decor circuit-line right"></div>
-
-            <div class="decor arduino-board">
-                <div class="pin-row top">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="pin-row bottom">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </div>
-
-            <div class="content center-content">
-                <h1>Thank you for listening.</h1>
+            <div>
+                <h1>A BARCODE-DRIVEN SALES AND CONTAINER INVENTORY MANAGEMENT SYSTEM FOR WATER REFILING STATIONS</h1>
+                <h1 class="defended">DATABASE DEFENDED!!!</h1>
             </div>
         </div>
     </div>
 
 </div>
 
-<!-- FULLSCREEN IMAGE MODAL -->
 <div class="fullscreen" id="fullscreen">
     <img id="fullImg" alt="Fullscreen Image">
 </div>
 
-<!-- NAVIGATION DOTS -->
 <div class="dots" id="dots"></div>
 
 <script>
@@ -1142,121 +174,54 @@ let zoomActive = false;
 
 function createDots() {
     dotsContainer.innerHTML = "";
-
-    slides.forEach(function(slide, index) {
+    slides.forEach((_, index) => {
         const dot = document.createElement("div");
         dot.className = "dot";
-
-        if (index === currentSlide) {
-            dot.classList.add("active-dot");
-        }
-
-        dot.addEventListener("click", function() {
-            if (!zoomActive) {
-                goToSlide(index);
-            }
-        });
-
+        if (index === currentSlide) dot.classList.add("active-dot");
+        dot.onclick = () => goToSlide(index);
         dotsContainer.appendChild(dot);
     });
 }
 
 function updateDots() {
-    document.querySelectorAll(".dot").forEach(function(dot, index) {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
         dot.classList.toggle("active-dot", index === currentSlide);
     });
 }
 
 function goToSlide(index) {
-    if (index < 0 || index >= slides.length || index === currentSlide) return;
-
+    if (zoomActive || index < 0 || index >= slides.length) return;
     slides[currentSlide].classList.remove("active");
     currentSlide = index;
     slides[currentSlide].classList.add("active");
-
     updateDots();
 }
 
 function nextSlide() {
-    if (!zoomActive && currentSlide < slides.length - 1) {
-        goToSlide(currentSlide + 1);
-    }
+    if (currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
 }
 
 function prevSlide() {
-    if (!zoomActive && currentSlide > 0) {
-        goToSlide(currentSlide - 1);
-    }
+    if (currentSlide > 0) goToSlide(currentSlide - 1);
 }
 
-/* KEYBOARD NAVIGATION */
-document.addEventListener("keydown", function(e) {
-    if (zoomActive) {
-        if (e.key === "Escape") {
-            closeFullscreen();
-        }
-        return;
-    }
-
-    if (e.key === "ArrowRight" || e.key === " ") {
-        e.preventDefault();
-        nextSlide();
-    }
-
-    if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        prevSlide();
-    }
+document.addEventListener("keydown", e => {
+    if (zoomActive && e.key === "Escape") closeFullscreen();
+    else if (e.key === "ArrowRight" || e.key === " ") nextSlide();
+    else if (e.key === "ArrowLeft") prevSlide();
 });
 
-/* MOUSE WHEEL NAVIGATION */
 let wheelLock = false;
-
-window.addEventListener("wheel", function(e) {
+window.addEventListener("wheel", e => {
     if (zoomActive || wheelLock) return;
-
-    if (e.deltaY > 0) {
-        nextSlide();
-    } else if (e.deltaY < 0) {
-        prevSlide();
-    }
-
+    e.deltaY > 0 ? nextSlide() : prevSlide();
     wheelLock = true;
-
-    setTimeout(function() {
-        wheelLock = false;
-    }, 220);
+    setTimeout(() => wheelLock = false, 220);
 });
 
-/* TOUCH SWIPE NAVIGATION */
-let startX = 0;
-
-document.addEventListener("touchstart", function(e) {
-    if (zoomActive) return;
-    startX = e.changedTouches[0].screenX;
-});
-
-document.addEventListener("touchend", function(e) {
-    if (zoomActive) return;
-
-    const endX = e.changedTouches[0].screenX;
-
-    if (endX < startX - 50) {
-        nextSlide();
-    }
-
-    if (endX > startX + 50) {
-        prevSlide();
-    }
-});
-
-/* IMAGE ZOOM */
 function openFullscreen(img) {
-    const fullscreen = document.getElementById("fullscreen");
-    const fullImg = document.getElementById("fullImg");
-
-    fullImg.src = img.src;
-    fullscreen.style.display = "flex";
+    document.getElementById("fullImg").src = img.src;
+    document.getElementById("fullscreen").style.display = "flex";
     zoomActive = true;
 }
 
@@ -1265,21 +230,15 @@ function closeFullscreen() {
     zoomActive = false;
 }
 
-document.querySelectorAll(".zoomable").forEach(function(img) {
-    img.addEventListener("click", function(e) {
+document.querySelectorAll(".zoomable").forEach(img => {
+    img.onclick = e => {
         e.stopPropagation();
         openFullscreen(img);
-    });
-
-    img.onerror = function() {
-        this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="900" height="520"%3E%3Crect width="900" height="520" fill="%2307162a"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%2367e8f9" font-size="34" font-family="Arial"%3EImage Preview Not Available%3C/text%3E%3C/svg%3E';
     };
 });
 
-document.getElementById("fullscreen").addEventListener("click", closeFullscreen);
+document.getElementById("fullscreen").onclick = closeFullscreen;
 
-/* INITIALIZE */
-slides[0].classList.add("active");
 createDots();
 </script>
 
